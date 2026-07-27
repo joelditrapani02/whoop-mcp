@@ -99,7 +99,7 @@ const HTML_RESPONSE_HEADERS = {
  */
 export function startCallbackServer(options: CallbackServerOptions): CallbackServerHandle {
   const requestedPort = options.port ?? 3000;
-  const timeoutMs = options.timeoutMs ?? 120_000;
+  const timeoutMs = options.timeoutMs ?? 600_000;
 
   let resolvedPort = requestedPort;
 
