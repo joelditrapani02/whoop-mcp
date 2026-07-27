@@ -16,10 +16,10 @@ export const WHOOP_TOKEN_URL = "https://api.prod.whoop.com/oauth/oauth2/token";
 
 /** All OAuth scopes required by the 6 MCP tools */
 export const WHOOP_REQUIRED_SCOPES =
-  "offline read:recovery read:cycles read:workout read:sleep read:profile read:body_measurement";
+    "offline read:recovery read:cycles read:workout read:sleep read:profile read:body_measurement";
 
-/** Default OAuth redirect URI for the local callback server */
-export const WHOOP_REDIRECT_URI = "http://localhost:3000/callback";
+/** OAuth redirect URI — env-configurable for hosted deployments, defaults to the local callback server */
+export const WHOOP_REDIRECT_URI = process.env.WHOOP_REDIRECT_URI ?? "http://localhost:3000/callback";
 
 // ---------------------------------------------------------------------------
 // Endpoint paths (relative to WHOOP_API_BASE_URL)
