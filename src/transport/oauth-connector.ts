@@ -164,6 +164,11 @@ export class OAuthConnectorProvider implements OAuthServerProvider {
     // Build redirect URL with code (and state if provided)
     const redirectUrl = new URL(params.redirectUri);
     redirectUrl.searchParams.set("code", code);
+    // RFC 9207: identify the issuer in the authorization response (strict
+    // clients such as claude.ai validate this against server metadata).
+    if (process.env.PUBLIC_URL) {
+      redirectUrl.searchParams.set("iss", process.env.PUBLIC_URL);
+    }
     if (params.state) {
       redirectUrl.searchParams.set("state", params.state);
     }
